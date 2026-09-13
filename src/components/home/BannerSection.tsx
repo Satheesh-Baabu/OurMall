@@ -13,12 +13,12 @@ const banners = [
   {
     image: "/banner_2.png",
     alt: "Special shopping offers",
-    href: "#products",
+    href: "/products",
   },
   {
     image: "/banner_3.png",
     alt: "New arrivals and discounts",
-    href: "#products",
+    href: "/products",
   },
 ];
 
