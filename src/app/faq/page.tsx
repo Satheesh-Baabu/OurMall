@@ -1,4 +1,4 @@
-import FAQItem, { type FAQItemData } from "@/components/FAQItem";
+import FAQItem from "@/components/FAQItem";
 import { faqItems } from "@/data/faqData";
 
 export default function FAQPage() {

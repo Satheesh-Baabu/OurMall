@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
-import { Home, ArrowRight, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import Button from "@/components/Button";
 import { featureCards } from "@/data/featureCards";
 
