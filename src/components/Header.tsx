@@ -38,7 +38,7 @@ export default function Header() {
           </div>
           <div>
             <p className="text-xl font-bold tracking-tight text-heading">
-              OurMall
+              Our<span className="text-primary">Mall</span>
             </p>
           </div>
         </Link>

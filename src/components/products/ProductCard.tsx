@@ -28,8 +28,8 @@ export default function ProductCard({ product }: { product: Product }) {
             <span className="text-lg font-bold text-heading">${product.price.toFixed(2)}</span>
           </div>
 
-          <h3 className="line-clamp-2 min-h-[3.5rem] text-lg font-semibold text-heading">{product.title}</h3>
-
+          <h3 className="line-clamp-2 min-h-14 text-lg font-semibold text-heading" title={product.title}>{product.title}</h3>
+          <p className="line-clamp-2 min-h-12 text-xs leading-7 text-body">{product.description}</p>
           <div className="flex items-center justify-between gap-2">
             <Rating value={product.rating.rate} />
             <span className="text-xs text-body">({product.rating.count})</span>
