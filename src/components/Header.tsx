@@ -139,7 +139,7 @@ export default function Header() {
                   </Link>
                 ))}
 
-                <div className="mt-auto " onClick={() => setIsOpen(false)}>
+                <div className="mt-3" onClick={() => setIsOpen(false)}>
                   <Button href="/register" className="w-full justify-center ">
                     Register
                   </Button>
