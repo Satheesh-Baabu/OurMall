@@ -1,9 +1,16 @@
 import Image from "next/image";
-import { Sparkles } from "lucide-react";
+import Link from "next/link";
+import { Sparkles, ArrowRight, Home } from "lucide-react";
 import Button from "@/components/Button";
 import { featureCards } from "@/data/featureCards";
-
+import { getCategories } from "@/lib/api";
 export default async function HomePage() {
+  let categories: string[] = [];
+  try {
+    categories = await getCategories();
+  } catch (error) {
+    console.error("Failed to load categories:", error);
+  }
   return (
     <main className="flex-1">
       {/* Hero Section  */}
@@ -41,9 +48,8 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
-      
       {/* why choose us section */}
-      <section className="bg-primary/10 py-12">
+      <section className="bg-primary/10 py-10 lg:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-8 text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
@@ -57,7 +63,7 @@ export default async function HomePage() {
             {featureCards.map(({ title, description, icon: Icon }) => (
               <div
                 key={title}
-                className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+                className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-lg transition-shadow duration-300 hover:border-primary/90"
               >
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
                   <Icon className="h-5 w-5" aria-hidden="true" />
@@ -71,19 +77,58 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+      {/* Browse by Category Section */}
+      {categories.length > 0 && (
+        <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
+              Categories
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-heading">
+              Shop by category
+            </h2>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {categories.slice(0, 4).map((category) => (
+              <Link
+                key={category}
+                href={`/products?category=${encodeURIComponent(category)}`}
+                className="group rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+              >
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <Home className="h-5 w-5" aria-hidden="true" />
+                </div>
+                <p className="text-lg font-semibold capitalize text-heading">
+                  {category}
+                </p>
+                <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                  Explore
+                  <ArrowRight
+                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                    aria-hidden="true"
+                  />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
       {/* Ready to Shop Section */}
-      <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
-        <div className="rounded-4xl bg-secondary px-6 py-10 text-center text-white sm:px-10 lg:px-16">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white">
+      <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
+        <div className="rounded-4xl border border-slate-300 bg-white px-6 py-10 text-center sm:px-10 lg:px-16 shadow-xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
             Ready to shop
           </p>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl text-heading">
+
+          <h2 className="mt-4 text-3xl font-bold tracking-tight text-heading sm:text-4xl">
             Upgrade your everyday essentials.
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-200">
+
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-body">
             Explore our catalog for home favorites, accessories, and practical
             finds designed to fit your routine.
           </p>
+
           <div className="mt-8 flex justify-center">
             <Button href="/products">Explore Products</Button>
           </div>
