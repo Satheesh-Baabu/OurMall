@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
-import { Sparkles, ArrowRight, Home } from "lucide-react";
+import { Sparkles} from "lucide-react";
 import Button from "@/components/Button";
 import { featureCards } from "@/data/featureCards";
 import CategoriesSection from "@/components/home/CategoriesSection";
@@ -73,41 +72,6 @@ export default async function HomePage() {
         </div>
       </section>
       {/* Browse by Category Section */}
-      {/* {categories.length > 0 && (
-        <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-          <div className="mb-8 reveal reveal-left">
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
-              Categories
-            </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-heading">
-              Shop by category
-            </h2>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {categories.slice(0, 4).map((category) => (
-              <Link
-                key={category}
-                href={`/products?category=${encodeURIComponent(category)}`}
-                className="group rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md reveal reveal-bottom"
-              >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <Home className="h-5 w-5" aria-hidden="true" />
-                </div>
-                <p className="text-lg font-semibold capitalize text-heading">
-                  {category}
-                </p>
-                <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary">
-                  Explore
-                  <ArrowRight
-                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-                    aria-hidden="true"
-                  />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )} */}
       <CategoriesSection />
       {/* Ready to Shop Section */}
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-16 reveal reveal-bottom">
