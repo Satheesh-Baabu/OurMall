@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, ShoppingBag, X } from "lucide-react";
@@ -9,7 +10,7 @@ import Button from "@/components/Button";
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
-  { href: "/faq", label: "FAQ" },
+  { href: "/faq", label: "Faq" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -26,21 +27,19 @@ export default function Header() {
   };
 
   return (
-    <header className="relative sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Link
           href="/"
           className="flex items-center gap-3"
           aria-label="Our Mall home"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white shadow-sm">
-            <ShoppingBag className="h-5 w-5" aria-hidden="true" />
-          </div>
-          <div>
-            <p className="text-xl font-bold tracking-tight text-heading">
-              Our<span className="text-primary">Mall</span>
-            </p>
-          </div>
+          <Image
+            src="/ourmalllogo.png"
+            alt="Our Mall logo"
+            width={150}
+            height={50}
+          />
         </Link>
 
         <nav
@@ -51,7 +50,7 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className={`relative text-sm font-medium transition-colors duration-300 after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 ${
+              className={`relative text-sm font-medium transition-colors duration-300 after:absolute after:-bottom-2 after:left-0 after:h-1 after:bg-primary after:transition-all after:duration-300 ${
                 isActive(item.href)
                   ? "text-primary after:w-full"
                   : "text-body hover:text-primary after:w-0 hover:after:w-full"
@@ -69,7 +68,7 @@ export default function Header() {
         <button
           type="button"
           onClick={() => setIsOpen((open) => !open)}
-          className="inline-flex rounded-full border border-slate-200 p-2 text-heading transition-colors hover:border-primary hover:text-primary md:hidden"
+          className="inline-flex text-heading transition-colors hover:border-primary hover:text-primary md:hidden"
           aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-expanded={isOpen}
         >
@@ -80,33 +79,74 @@ export default function Header() {
           )}
         </button>
       </div>
+
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="absolute left-0 right-0 top-full border-t border-slate-200 bg-white shadow-lg md:hidden">
-          <nav
-            className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-4 sm:px-6"
-            aria-label="Mobile navigation"
-          >
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className={`rounded-xl px-3 py-2 text-sm font-medium transition-colors ${
-                  isActive(item.href)
-                    ? "bg-primary/10 text-primary"
-                    : "text-body hover:bg-slate-100 hover:text-primary"
-                }`}
+        <div className="fixed inset-0 z-[999] md:hidden h-screen">
+          {/* Background Overlay */}
+          <button
+            type="button"
+            aria-label="Close menu"
+            onClick={() => setIsOpen(false)}
+            className="absolute inset-0 h-full w-full bg-black/70"
+          />
+
+          {/* Side Drawer */}
+          <div className="absolute right-0 top-0 h-screen w-[70%] max-w-sm bg-white shadow-2xl">
+            <div className="flex h-full flex-col bg-white">
+              {/* Mobile Header */}
+              <div className="flex items-center justify-between border-b border-slate-200 px-4 py-4 sm:px-6">
+                <Link
+                  href="/"
+                  onClick={() => setIsOpen(false)}
+                  aria-label="Our Mall home"
+                >
+                  <Image
+                    src="/ourmalllogo.png"
+                    alt="Our Mall logo"
+                    width={150}
+                    height={50}
+                  />
+                </Link>
+
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex text-heading transition-colors hover:border-primary hover:text-primary"
+                  aria-label="Close menu"
+                >
+                  <X className="h-5 w-5" aria-hidden="true" />
+                </button>
+              </div>
+
+              {/* Mobile Navigation Links */}
+              <nav
+                className="flex flex-1 flex-col gap-2 px-4 py-6 sm:px-6 "
+                aria-label="Mobile navigation"
               >
-                {item.label}
-              </Link>
-            ))}
-            <div className="pt-2" onClick={() => setIsOpen(false)}>
-              <Button href="/register" className="w-full justify-center">
-                Register
-              </Button>
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`rounded-xl px-4 py-3 text-base font-medium transition-colors ${
+                      isActive(item.href)
+                        ? "bg-primary/10 text-primary"
+                        : "text-body hover:bg-slate-100 hover:text-primary"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+
+                <div className="mt-auto " onClick={() => setIsOpen(false)}>
+                  <Button href="/register" className="w-full justify-center ">
+                    Register
+                  </Button>
+                </div>
+              </nav>
             </div>
-          </nav>
+          </div>
         </div>
       )}
     </header>

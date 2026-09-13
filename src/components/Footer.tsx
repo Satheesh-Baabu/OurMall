@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import Image from "next/image";
 const footerLinks = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
@@ -12,9 +12,12 @@ export default function Footer() {
     <footer className="border-t border-slate-200 bg-primary/10">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.3fr_0.8fr_1fr] lg:px-8">
         <div>
-          <p className="text-2xl font-bold tracking-tight text-heading">
-            Our<span className="text-primary">Mall</span>
-          </p>
+          <Image
+                      src="/ourmalllogo.png"
+                      alt="Our Mall logo"
+                      width="150"
+                      height="50"
+                    />
           <p className="mt-4 max-w-md text-sm leading-6 text-body">
             Curated essentials for modern living, everyday comfort, and smarter
             shopping.

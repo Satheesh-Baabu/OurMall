@@ -3,6 +3,7 @@ import { Sparkles} from "lucide-react";
 import Button from "@/components/Button";
 import { featureCards } from "@/data/featureCards";
 import CategoriesSection from "@/components/home/CategoriesSection";
+import ProductsSection from "@/app/products/page";
 export default async function HomePage() {
   
   return (
@@ -42,6 +43,7 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+      <ProductsSection />
       {/* why choose us section */}
       <section className="bg-primary/10 py-10 lg:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
