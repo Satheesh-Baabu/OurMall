@@ -13,7 +13,6 @@ export default async function HomePage() {
         <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="reveal reveal-left order-1">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-secondary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-secondary">
-              <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
               Fresh picks for everyday life
             </div>
             <h1 className="max-w-xl text-4xl font-bold tracking-tight text-heading sm:text-5xl lg:text-6xl">
