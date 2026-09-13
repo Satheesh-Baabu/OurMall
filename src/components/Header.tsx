@@ -101,8 +101,8 @@ export default function Header() {
                 {item.label}
               </Link>
             ))}
-            <div className="pt-2">
-              <Button href="/register" onClick={() => setIsOpen(false)} className="w-full justify-center">
+            <div className="pt-2" onClick={() => setIsOpen(false)}>
+              <Button href="/register" className="w-full justify-center">
                 Register
               </Button>
             </div>
