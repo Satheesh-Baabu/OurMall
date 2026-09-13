@@ -1,5 +1,7 @@
 @import "tailwindcss";
-
+html {
+  scroll-padding-top: 80px;
+}
 :root {
   --color-primary: #7d50a0;
   --color-heading: oklch(21% 0.006 285.885);
@@ -60,4 +62,37 @@ textarea {
 
 * {
   box-sizing: border-box;
+}
+
+/* Animation */
+.reveal {
+  opacity: 0;
+  transition:
+    opacity 700ms ease,
+    transform 700ms ease;
+}
+
+.reveal-left {
+  transform: translateX(-50px);
+}
+
+.reveal-right {
+  transform: translateX(50px);
+}
+
+.reveal-bottom {
+  transform: translateY(50px);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

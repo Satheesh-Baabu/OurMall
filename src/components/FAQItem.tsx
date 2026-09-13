@@ -12,7 +12,7 @@ export default function FAQItem({ question, answer }: FAQItemData) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm ">
       <button
         type="button"
         onClick={() => setIsOpen((open) => !open)}

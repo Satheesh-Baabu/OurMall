@@ -51,7 +51,7 @@ export default function RegisterPage() {
 
   return (
     <main className="mx-auto max-w-xl px-4 py-12 sm:px-6 lg:px-8">
-      <div className="rounded-4xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+      <div className="rounded-4xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8 reveal reveal-bottom">
         <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
           Register
         </p>

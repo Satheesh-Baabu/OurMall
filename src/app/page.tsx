@@ -3,20 +3,15 @@ import Link from "next/link";
 import { Sparkles, ArrowRight, Home } from "lucide-react";
 import Button from "@/components/Button";
 import { featureCards } from "@/data/featureCards";
-import { getCategories } from "@/lib/api";
+import CategoriesSection from "@/components/home/CategoriesSection";
 export default async function HomePage() {
-  let categories: string[] = [];
-  try {
-    categories = await getCategories();
-  } catch (error) {
-    console.error("Failed to load categories:", error);
-  }
+  
   return (
     <main className="flex-1">
       {/* Hero Section  */}
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
         <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="order-1">
+          <div className="reveal reveal-left order-1">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-secondary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-secondary">
               <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
               Fresh picks for everyday life
@@ -33,7 +28,7 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="order-2">
+          <div className="reveal reveal-right order-2">
             <div className="overflow-hidden rounded-4xl border border-slate-200 bg-white p-3 shadow-sm">
               <div className="relative h-120 overflow-hidden rounded-[26px] bg-primary/10">
                 <Image
@@ -52,10 +47,10 @@ export default async function HomePage() {
       <section className="bg-primary/10 py-10 lg:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-8 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary reveal reveal-right">
               Why choose us
             </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-heading">
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-heading reveal reveal-left">
               Designed to make shopping easier
             </h2>
           </div>
@@ -63,7 +58,7 @@ export default async function HomePage() {
             {featureCards.map(({ title, description, icon: Icon }) => (
               <div
                 key={title}
-                className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-lg transition-shadow duration-300 hover:border-primary/90"
+                className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-lg transition-shadow duration-300 hover:border-primary/90 reveal reveal-bottom"
               >
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
                   <Icon className="h-5 w-5" aria-hidden="true" />
@@ -78,9 +73,9 @@ export default async function HomePage() {
         </div>
       </section>
       {/* Browse by Category Section */}
-      {categories.length > 0 && (
+      {/* {categories.length > 0 && (
         <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-          <div className="mb-8">
+          <div className="mb-8 reveal reveal-left">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
               Categories
             </p>
@@ -93,7 +88,7 @@ export default async function HomePage() {
               <Link
                 key={category}
                 href={`/products?category=${encodeURIComponent(category)}`}
-                className="group rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                className="group rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md reveal reveal-bottom"
               >
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
                   <Home className="h-5 w-5" aria-hidden="true" />
@@ -112,24 +107,25 @@ export default async function HomePage() {
             ))}
           </div>
         </section>
-      )}
+      )} */}
+      <CategoriesSection />
       {/* Ready to Shop Section */}
-      <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
+      <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-16 reveal reveal-bottom">
         <div className="rounded-4xl border border-slate-300 bg-white px-6 py-10 text-center sm:px-10 lg:px-16 shadow-xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary reveal reveal-right">
             Ready to shop
           </p>
 
-          <h2 className="mt-4 text-3xl font-bold tracking-tight text-heading sm:text-4xl">
+          <h2 className="mt-4 text-3xl font-bold tracking-tight text-heading sm:text-4xl reveal reveal-left">
             Upgrade your everyday essentials.
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-body">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-body reveal reveal-right">
             Explore our catalog for home favorites, accessories, and practical
             finds designed to fit your routine.
           </p>
 
-          <div className="mt-8 flex justify-center">
+          <div className="mt-8 flex justify-center reveal reveal-bottom">
             <Button href="/products">Explore Products</Button>
           </div>
         </div>

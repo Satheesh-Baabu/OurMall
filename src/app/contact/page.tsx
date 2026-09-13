@@ -40,8 +40,8 @@ export default function ContactPage() {
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-      <div className="grid gap-8 rounded-4xl border border-slate-200 bg-white p-6 shadow-sm lg:grid-cols-[0.9fr_1.1fr] lg:p-10">
-        <div className="rounded-3xl bg-primary/10 p-8">
+      <div className="reveal reveal-bottom grid gap-8 rounded-4xl border border-slate-200 bg-white p-6 shadow-sm lg:grid-cols-[0.9fr_1.1fr] lg:p-10">
+        <div className="rounded-3xl bg-primary/10 p-8 reveal reveal-left">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">Contact</p>
           <h1 className="mt-4 text-4xl font-bold tracking-tight text-heading">We’d love to hear from you.</h1>
           <p className="mt-4 text-base leading-7 text-body">
@@ -49,7 +49,7 @@ export default function ContactPage() {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+        <form onSubmit={handleSubmit} className="space-y-5 reveal reveal-right" noValidate>
           <div>
             <label htmlFor="name" className="mb-2 block text-sm font-medium text-heading">
               Name
