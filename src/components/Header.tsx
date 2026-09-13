@@ -26,7 +26,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-sm">
+    <header className="relative sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Link
           href="/"
@@ -82,7 +82,7 @@ export default function Header() {
       </div>
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="border-t border-slate-200 bg-white md:hidden">
+        <div className="absolute left-0 right-0 top-full border-t border-slate-200 bg-white shadow-lg md:hidden">
           <nav
             className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-4 sm:px-6"
             aria-label="Mobile navigation"
