@@ -73,7 +73,7 @@ export default function Pagination({
 
   return (
     <nav
-      className="mt-10 flex flex-col gap-5 border-t border-slate-200 pt-6 sm:flex-row sm:items-center sm:justify-between"
+      className="mt-10 flex flex-col gap-5 border-t border-slate-200 pt-6 sm:flex-row items-center sm:justify-between"
       aria-label="Pagination navigation"
     >
       {/* Page size */}
