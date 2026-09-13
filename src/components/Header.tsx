@@ -3,14 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, ShoppingBag, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import Button from "@/components/Button";
 
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
-  { href: "/faq", label: "Faq" },
   { href: "/contact", label: "Contact" },
 ];
 
